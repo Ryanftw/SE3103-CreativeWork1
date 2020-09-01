@@ -5,29 +5,23 @@ import java.util.*;
 
 public class MemoryGame {
 
+	private static final int DEFAUL_TSIZE = 6;
 	private int tilesSelected;
 	private int pairsFound;
 	private Tile lastTile;
 	private Tile lastTile2;
 	private int gameBoardSize;
-	private int defaultSize;
+	// private int defaultSize;
 	private ArrayList<Integer> pairs = new ArrayList<Integer>();
 	private int pair;
 	private Tile[][] gameBoard;
 
 	public MemoryGame() {
-		tilesSelected = 0;
-		pairsFound = 0;
-		pair = 0;
-		defaultSize = 6;
-		gameBoard = new Tile[defaultSize][defaultSize];
+		gameBoardSize = DEFAUL_TSIZE;
+		gameBoard = new Tile[gameBoardSize][gameBoardSize];
 	}
 
 	public MemoryGame(int gameSize) {
-		tilesSelected = 0;
-		pairsFound = 0;
-		pair = 0;
-		defaultSize = 6;
 		gameBoardSize = gameSize;
 		gameBoard = new Tile[gameBoardSize][gameBoardSize];
 	}
@@ -56,8 +50,16 @@ public class MemoryGame {
 		}
 	}
 
+	public int getGameBoardSize() {
+		return gameBoardSize;
+	}
+
 	public int getVal(int x, int y) {
 		return gameBoard[x][y].getValue();
+	}
+
+	public Tile[][] getBoard() {
+		return gameBoard;
 	}
 
 	public void printList() {
@@ -77,10 +79,12 @@ public class MemoryGame {
 			int y = sc.nextInt();
 			tilesSelected++;
 			selectTile(x, y);
+			sc.close();
 		}
 
 		System.out.println("You won!");
 		System.exit(1);
+
 	}
 
 	public boolean notFinished() {
