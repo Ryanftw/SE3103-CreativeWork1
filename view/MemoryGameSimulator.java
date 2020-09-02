@@ -1,19 +1,15 @@
 package view;
 
 import java.awt.Container;
-//import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import controller.ButtonClickListener;
 import model.MemoryGame;
-import model.Tile;
 
 import java.awt.GridLayout;
-import java.sql.Time;
 import java.awt.BorderLayout;
 
 public class MemoryGameSimulator {
@@ -21,7 +17,6 @@ public class MemoryGameSimulator {
 	private MemoryGame memGame = new MemoryGame();
 	private int rows;
 	private JFrame window;
-	// private Tile[][] tiles;
 	private JButton[][] tileButtons;
 	private JButton exit = new JButton("Exit");
 	private String[][] myText;
@@ -32,7 +27,6 @@ public class MemoryGameSimulator {
 		this.window = window;
 		window.setTitle("Memory Game Simulator");
 		rows = memGame.getGameBoardSize();
-		// tiles = new Tile[rows][rows];
 		tileButtons = new JButton[rows][rows];
 		buttonRows = new JPanel[rows];
 		myText = new String[rows][rows];
@@ -48,7 +42,6 @@ public class MemoryGameSimulator {
 			buttonRows[i] = new JPanel();
 			for (int j = 0; j < rows; j++) {
 				tileButtons[i][j] = new JButton("Tile : " + (i + 1) * (j + 1));
-				tileButtons[i][j].setText("Tile : " + (i + 1) * (j + 1));
 				myText[i][j] = new String("Tile : " + (i + 1) * (j + 1));
 				buttonRows[i].add(tileButtons[i][j]);
 			}
@@ -62,7 +55,6 @@ public class MemoryGameSimulator {
 			}
 		}
 
-		int countdown = 30000;
 		JPanel southPanel = new JPanel();
 		cp.add(BorderLayout.SOUTH, southPanel);
 		southPanel.setLayout(new GridLayout(3, 1));

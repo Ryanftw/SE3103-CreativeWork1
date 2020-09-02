@@ -3,10 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-
 import view.MemoryGameSimulator;
-import view.MenuScreen;
 
 public class ButtonClickListener implements ActionListener {
 

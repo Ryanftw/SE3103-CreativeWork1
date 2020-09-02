@@ -11,7 +11,6 @@ public class MemoryGame {
 	private Tile lastTile;
 	private Tile lastTile2;
 	private int gameBoardSize;
-	// private int defaultSize;
 	private ArrayList<Integer> pairs = new ArrayList<Integer>();
 	private int pair;
 	private Tile[][] gameBoard;
@@ -93,7 +92,6 @@ public class MemoryGame {
 				lastTile.setMatch(true);
 				lastTile2.setMatch(true);
 				pairsFound++;
-				// System.out.println("Pair found!\n");
 			}
 		}
 	}
@@ -124,10 +122,6 @@ public class MemoryGame {
 
 	public int getVal(int x, int y) {
 		return gameBoard[x][y].getValue();
-	}
-
-	public Tile[][] getBoard() {
-		return gameBoard;
 	}
 
 	public Tile getTile(int x, int y) {

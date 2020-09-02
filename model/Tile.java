@@ -30,20 +30,8 @@ public class Tile {
 		return isMatched;
 	}
 
-	public void setValue(int x) {
-		value = x;
-	}
-
 	public int getValue() {
 		return value;
-	}
-
-	public void setText(String message) {
-		text = message;
-	}
-
-	public String getText() {
-		return text;
 	}
 
 	public int getX() {

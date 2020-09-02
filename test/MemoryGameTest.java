@@ -1,7 +1,6 @@
 package test;
 
 import model.MemoryGame;
-import model.Tile;
 
 public class MemoryGameTest {
 
