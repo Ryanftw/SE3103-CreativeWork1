@@ -5,7 +5,7 @@ import java.util.*;
 
 public class MemoryGame {
 
-	private static final int DEFAUL_TSIZE = 6;
+	private static final int DEFAULT_SIZE = 4;
 	private int tilesSelected;
 	private int pairsFound;
 	private Tile lastTile;
@@ -17,7 +17,7 @@ public class MemoryGame {
 	private Tile[][] gameBoard;
 
 	public MemoryGame() {
-		gameBoardSize = DEFAUL_TSIZE;
+		gameBoardSize = DEFAULT_SIZE;
 		gameBoard = new Tile[gameBoardSize][gameBoardSize];
 	}
 
@@ -41,6 +41,7 @@ public class MemoryGame {
 		for (int i = 0; i < gameBoardSize; i++) {
 			for (int j = 0; j < gameBoardSize; j++) {
 				gameBoard[i][j] = new Tile(pairs.get(k));
+				gameBoard[i][j].setLocation(i, j);
 				k++;
 				if (k == ((gameBoardSize * gameBoardSize) / 2)) {
 					k = 0;
@@ -48,18 +49,6 @@ public class MemoryGame {
 				}
 			}
 		}
-	}
-
-	public int getGameBoardSize() {
-		return gameBoardSize;
-	}
-
-	public int getVal(int x, int y) {
-		return gameBoard[x][y].getValue();
-	}
-
-	public Tile[][] getBoard() {
-		return gameBoard;
 	}
 
 	public void printList() {
@@ -98,14 +87,51 @@ public class MemoryGame {
 	public void selectTile(int x, int y) {
 		lastTile2 = lastTile;
 		lastTile = gameBoard[x][y];
+		++tilesSelected;
 		if (tilesSelected == 2) {
 			if (lastTile.getValue() == lastTile2.getValue()) {
 				lastTile.setMatch(true);
 				lastTile2.setMatch(true);
 				pairsFound++;
-				System.out.println("Pair found!\n");
+				// System.out.println("Pair found!\n");
 			}
-			tilesSelected = 0;
 		}
+	}
+
+	public int getPairsFound() {
+		return pairsFound;
+	}
+
+	public void setTilesSelected() {
+		tilesSelected = 0;
+	}
+
+	public int getTilesSelected() {
+		return tilesSelected;
+	}
+
+	public Tile getLastTile() {
+		return lastTile;
+	}
+
+	public Tile getLastTile2() {
+		return lastTile2;
+	}
+
+	public int getGameBoardSize() {
+		return gameBoardSize;
+	}
+
+	public int getVal(int x, int y) {
+		return gameBoard[x][y].getValue();
+	}
+
+	public Tile[][] getBoard() {
+		return gameBoard;
+	}
+
+	public Tile getTile(int x, int y) {
+		return gameBoard[x][y];
+
 	}
 }
