@@ -41,11 +41,13 @@ public class MemoryGameSimulator {
 		JPanel centerPanel = new JPanel();
 		cp.add(BorderLayout.CENTER, centerPanel);
 		centerPanel.setLayout(new GridLayout(rows, 1));
+		int tileNum = 0;
 		for (int i = 0; i < rows; i++) {
 			buttonRows[i] = new JPanel();
 			for (int j = 0; j < rows; j++) {
-				tileButtons[i][j] = new JButton("Tile : " + (i + 1) * (j + 1));
-				myText[i][j] = new String("Tile : " + (i + 1) * (j + 1));
+				tileNum++;
+				tileButtons[i][j] = new JButton("Tile : " + tileNum);
+				myText[i][j] = new String("Tile : " + tileNum);
 				buttonRows[i].add(tileButtons[i][j]);
 			}
 			centerPanel.add(buttonRows[i]);

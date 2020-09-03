@@ -21,6 +21,10 @@ public class ButtonClickListener implements ActionListener {
 			for (int j = 0; j < buttons; j++) {
 				if (button == panel.getButton(i, j)) {
 					panel.getMemoryGame().selectTile(i, j);
+
+					panel.getButton(panel.getMemoryGame().getLastTile().getX(),
+							panel.getMemoryGame().getLastTile().getY()).setEnabled(false);
+
 					int z = panel.getMemoryGame().getTile(i, j).getValue();
 					panel.getButton(i, j).setText(Integer.toString(z));
 					if (panel.getMemoryGame().getTilesSelected() == 2) {
@@ -45,11 +49,17 @@ public class ButtonClickListener implements ActionListener {
 											panel.getMemoryGame().getLastTile().getY()));
 							panel.getMemoryGame().setTilesSelected();
 
+							panel.getButton(panel.getMemoryGame().getLastTile().getX(),
+									panel.getMemoryGame().getLastTile().getY()).setEnabled(true);
+
 							panel.getButton(panel.getMemoryGame().getLastTile2().getX(),
 									panel.getMemoryGame().getLastTile2().getY())
 									.setText(panel.getMyText(panel.getMemoryGame().getLastTile2().getX(),
 											panel.getMemoryGame().getLastTile2().getY()));
 							panel.getMemoryGame().setTilesSelected();
+
+							panel.getButton(panel.getMemoryGame().getLastTile2().getX(),
+									panel.getMemoryGame().getLastTile2().getY()).setEnabled(true);
 						}
 					}
 				}
