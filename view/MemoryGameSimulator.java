@@ -14,7 +14,7 @@ import java.awt.BorderLayout;
 
 public class MemoryGameSimulator {
 
-	private MemoryGame memGame = new MemoryGame();
+	private MemoryGame memGame;// = new MemoryGame();
 	private int rows;
 	private JFrame window;
 	private JButton[][] tileButtons;
@@ -22,14 +22,17 @@ public class MemoryGameSimulator {
 	private String[][] myText;
 	private JPanel[] buttonRows;
 	private JTextArea foundDisplay = new JTextArea();;
+	private JTextArea youWinDisplay = new JTextArea("You Win!!!");
 
-	public MemoryGameSimulator(JFrame window) {
+	public MemoryGameSimulator(JFrame window, int x) {
+		memGame = new MemoryGame(x);
 		this.window = window;
 		window.setTitle("Memory Game Simulator");
 		rows = memGame.getGameBoardSize();
 		tileButtons = new JButton[rows][rows];
 		buttonRows = new JPanel[rows];
 		myText = new String[rows][rows];
+		youWinDisplay.setVisible(false);
 		memGame.init();
 	}
 
@@ -61,10 +64,13 @@ public class MemoryGameSimulator {
 		JPanel foundRow = new JPanel();
 		foundDisplay.setText("Pairs found : ");
 		JPanel exitRow = new JPanel();
+		JPanel youWinRow = new JPanel();
 		foundRow.add(foundDisplay);
 		exitRow.add(exit);
+		youWinRow.add(youWinDisplay);
 		southPanel.add(foundRow);
 		southPanel.add(exitRow);
+		southPanel.add(youWinRow);
 
 		exit.addActionListener(e -> {
 			window.getContentPane().removeAll();
@@ -73,6 +79,10 @@ public class MemoryGameSimulator {
 			window.pack();
 			window.revalidate();
 		});
+	}
+
+	public void setYouWonDisplay() {
+		youWinDisplay.setVisible(true);
 	}
 
 	public int getRows() {

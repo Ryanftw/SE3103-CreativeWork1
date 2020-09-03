@@ -34,6 +34,9 @@ public class ButtonClickListener implements ActionListener {
 							panel.getButton(panel.getMemoryGame().getLastTile2().getX(),
 									panel.getMemoryGame().getLastTile2().getY()).setEnabled(false);
 							panel.getDisplay().setText("Pairs found : " + panel.getMemoryGame().getPairsFound());
+							if (panel.getMemoryGame().hasWon()) {
+								panel.setYouWonDisplay();
+							}
 							// Update the pairs found/pairs left in the south panel.
 						} else {
 							panel.getButton(panel.getMemoryGame().getLastTile().getX(),

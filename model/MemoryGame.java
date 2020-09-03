@@ -128,4 +128,11 @@ public class MemoryGame {
 		return gameBoard[x][y];
 
 	}
+
+	public boolean hasWon() {
+		if (pairsFound == (gameBoardSize * gameBoardSize) / 2) {
+			return true;
+		}
+		return false;
+	}
 }
